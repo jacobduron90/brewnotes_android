@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">BrewNotes</string>
+    <string name="title_activity_coffee_bag">CoffeeBagActivity</string>
+    <string name="title_activity_coffee_bag_detail">CoffeeBagDetailActivity</string>
+</resources>
