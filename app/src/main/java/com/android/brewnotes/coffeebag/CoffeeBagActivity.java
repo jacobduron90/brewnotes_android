@@ -79,7 +79,7 @@ public class CoffeeBagActivity extends BaseActivity implements CoffeeBagListPres
         @Override
         public void onBagClicked(CoffeeBag bag) {
             Intent detailIntent = new Intent(CoffeeBagActivity.this, CoffeeBagDetailActivity.class);
-            detailIntent.putExtra(CoffeeBagDetailActivity.EXTRA_COFFEE_BAG_DETAIL, bag);
+            detailIntent.putExtra(CoffeeBagDetailActivity.EXTRA_COFFEE_BAG_DETAIL, bag._id);
             startActivity(detailIntent);
         }
     };

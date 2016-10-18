@@ -12,6 +12,7 @@ public class CoffeeBag implements Serializable{
     public String countryOfOrigin;
     public String roast;
     public Photo photo;
+    public String _id;
 
 
     @Override
