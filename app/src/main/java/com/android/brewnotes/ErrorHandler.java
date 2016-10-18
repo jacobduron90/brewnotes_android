@@ -2,6 +2,7 @@ package com.android.brewnotes;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.widget.Toast;
 
 import com.android.brewnotes.login.MainActivity;
 import com.android.brewnotes.service.UserManager;
@@ -22,6 +23,8 @@ public class ErrorHandler {
             HttpException httpException = (HttpException)error;
             if(httpException.code() == 403){
                 bounceToLogin(activity);
+            }else if(httpException.message() != null){
+                Toast.makeText(activity, httpException.message().toString(), Toast.LENGTH_SHORT).show();
             }
         }
     }

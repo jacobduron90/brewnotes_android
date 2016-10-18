@@ -58,7 +58,7 @@ public class CoffeeBagManager{
     }
 
     public CoffeeBag getBagById (String id){
-        if(bags == null || bags.isEmpty()){
+        if(bags == null || bags.isEmpty() || id == null){
             return null;
         }
         for(CoffeeBag bag : bags){
