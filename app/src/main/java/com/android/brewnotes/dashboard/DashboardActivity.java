@@ -50,6 +50,12 @@ public class DashboardActivity extends BaseActivity implements CompanyAdapter.Co
     }
 
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        presenter.detach();
+    }
+
+    @Override
     public void onCompanyClicked(CoffeeCompany company) {
         Intent companyIntent = new Intent(DashboardActivity.this, CoffeeBagActivity.class);
         companyIntent.putExtra("company", company);

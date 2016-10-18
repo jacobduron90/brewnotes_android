@@ -3,6 +3,7 @@ package com.android.brewnotes.login
 import com.android.brewnotes.User
 import com.android.brewnotes.service.UserManager
 import rx.Subscriber
+import rx.Subscription
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
 import javax.inject.Inject
@@ -13,12 +14,17 @@ import javax.inject.Inject
 class LoginPresenter @Inject constructor(val userManager : UserManager){
 
     private var loginView : LoginView? = null;
+    var subscription : Subscription? = null
+
     fun attach(loginView : LoginView){
         this.loginView = loginView;
     }
 
     fun detach() {
         this.loginView = null;
+        if(subscription != null && !subscription!!.isUnsubscribed){
+            subscription?.unsubscribe()
+        }
     }
 
     fun requestLogin() {

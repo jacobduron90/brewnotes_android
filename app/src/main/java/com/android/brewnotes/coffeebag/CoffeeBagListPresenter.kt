@@ -2,6 +2,7 @@ package com.android.brewnotes.coffeebag
 
 import com.android.brewnotes.service.CoffeeBagManager
 import com.android.brewnotes.servicelayer.CoffeeBag
+import rx.Subscription
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
 import javax.inject.Inject
@@ -12,6 +13,7 @@ import javax.inject.Inject
 class CoffeeBagListPresenter @Inject constructor(val coffeeManager : CoffeeBagManager){
 
     var bagView : CoffeeBagListView? = null;
+    var subscription : Subscription? = null
 
     fun attach(bagView: CoffeeBagListView){
         this.bagView = bagView;
@@ -19,10 +21,13 @@ class CoffeeBagListPresenter @Inject constructor(val coffeeManager : CoffeeBagMa
 
     fun detach(){
         this.bagView = null;
+        if(subscription != null && !subscription!!.isUnsubscribed){
+            subscription?.unsubscribe()
+        }
     }
 
     fun getCoffeeBags(id : String) {
-        coffeeManager.getCoffeeBagListNetwork(id)
+        subscription = coffeeManager.getCoffeeBagListNetwork(id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(

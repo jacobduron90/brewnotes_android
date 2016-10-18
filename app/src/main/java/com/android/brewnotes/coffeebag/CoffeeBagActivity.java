@@ -75,6 +75,12 @@ public class CoffeeBagActivity extends BaseActivity implements CoffeeBagListPres
         presenter.getCoffeeBags(company._id);
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        presenter.detach();
+    }
+
     private CoffeeBagAdapter.BagClickListener bagClickListener = new CoffeeBagAdapter.BagClickListener() {
         @Override
         public void onBagClicked(CoffeeBag bag) {
