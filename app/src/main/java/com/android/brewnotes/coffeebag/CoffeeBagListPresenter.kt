@@ -1,10 +1,7 @@
 package com.android.brewnotes.coffeebag
 
-import android.util.Log
-import com.android.brewnotes.ErrorHandler
 import com.android.brewnotes.service.CoffeeBagManager
 import com.android.brewnotes.servicelayer.CoffeeBag
-import rx.Subscriber
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
 import javax.inject.Inject
