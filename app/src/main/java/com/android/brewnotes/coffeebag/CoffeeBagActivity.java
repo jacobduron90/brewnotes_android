@@ -25,9 +25,6 @@ import javax.inject.Inject;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
 public class CoffeeBagActivity extends BaseActivity implements CoffeeBagListPresenter.CoffeeBagListView{
     private final String TAG = "CoffeeBagActivity";

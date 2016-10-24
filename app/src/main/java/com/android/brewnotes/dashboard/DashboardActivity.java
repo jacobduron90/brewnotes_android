@@ -20,10 +20,6 @@ import javax.inject.Inject;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import rx.Observable;
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
 public class DashboardActivity extends BaseActivity implements CompanyAdapter.CompanyListener, CoffeeCompanyListPresenter.CoffeeCompanyListView {
 

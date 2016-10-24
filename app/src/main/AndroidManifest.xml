@@ -26,7 +26,8 @@
             android:name=".coffeebag.CoffeeBagDetailActivity"
             android:label="@string/title_activity_coffee_bag_detail"
             android:theme="@style/AppTheme" />
-        <activity android:name=".dashboard.DashboardActivity"></activity>
+        <activity android:name=".dashboard.DashboardActivity" />
+        <activity android:name=".recommendation.RecommendationSummaryActivity"></activity>
     </application>
 
 </manifest>

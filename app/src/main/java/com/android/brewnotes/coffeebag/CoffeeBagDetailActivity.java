@@ -1,5 +1,6 @@
 package com.android.brewnotes.coffeebag;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -12,11 +13,14 @@ import android.widget.Toast;
 
 import com.android.brewnotes.R;
 import com.android.brewnotes.framework.BaseActivity;
-import com.android.brewnotes.service.UserManager;
+import com.android.brewnotes.recommendation.RecommendationSummaryActivity;
 import com.android.brewnotes.servicelayer.CoffeeBag;
+import com.android.brewnotes.servicelayer.Recommendation;
+import com.android.brewnotes.widgets.RecommendationContainer;
 import com.bumptech.glide.Glide;
 
-import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -34,6 +38,9 @@ public class CoffeeBagDetailActivity extends BaseActivity implements CoffeeDetai
     @Bind(R.id.coffee_detail_roast)         TextView roastValue;
     @Bind(R.id.coffee_detail_hero_photo)    ImageView heroPhoto;
     @Bind(R.id.collapsing_toolbar)          CollapsingToolbarLayout collapseBar;
+    @Bind(R.id.recommendation_container)    RecommendationContainer container;
+
+
 
     @Inject CoffeeDetailPresenter presenter;
 
@@ -53,6 +60,12 @@ public class CoffeeBagDetailActivity extends BaseActivity implements CoffeeDetai
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
         presenter.getBagById(getIntent().getStringExtra(EXTRA_COFFEE_BAG_DETAIL));
+    }
+
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+        presenter.loadRecommendations();
     }
 
     @Override
@@ -81,6 +94,21 @@ public class CoffeeBagDetailActivity extends BaseActivity implements CoffeeDetai
     @Override
     public void errorLoadingBag() {
         Toast.makeText(this, "Couldn't find bag", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void setRecommendations(@Nullable List<? extends Recommendation> recs) {
+        if(recs != null){
+            container.displayRecommendations((List<Recommendation>)recs);
+            findViewById(R.id.recommendation_see_more).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    startActivity(RecommendationSummaryActivity.Companion.getIntent(CoffeeBagDetailActivity.this, presenter.getBag()._id));
+                }
+            });
+        }
+
+
     }
 
     @Override

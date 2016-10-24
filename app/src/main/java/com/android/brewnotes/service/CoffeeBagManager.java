@@ -13,7 +13,9 @@ import java.util.List;
 import javax.inject.Inject;
 
 import rx.Observable;
+import rx.Subscriber;
 import rx.functions.Action1;
+import rx.functions.Func1;
 
 /**
  * Created by jacobduron on 9/5/16.
@@ -23,6 +25,7 @@ public class CoffeeBagManager{
     UserManager userManager;
     BrewNotesContract contract;
     List<CoffeeBag> bags = null;
+    List<CoffeeCompany> companies = null;
 
 
     @Inject
@@ -53,8 +56,33 @@ public class CoffeeBagManager{
         return null;
     }
 
-    public Observable<List<CoffeeCompany>> getCoffeeCompanies(){
+    public Observable<List<CoffeeCompany>> getCoffeeCompaniesRx(){
         return BrewNotesApi.getInstance().getApi().getCoffeeCompaniesRx(userManager.getAuthToken());
+    }
+
+    public Observable<List<CoffeeCompany>> getCoffeeCompanies(){
+        return Observable
+                .concat(getCoffeeCompaniesMem(), getCoffeeCompaniesRx())
+                .first(new Func1<List<CoffeeCompany>, Boolean>() {
+                    @Override
+                    public Boolean call(List<CoffeeCompany> coffeeCompanies) {
+                        return coffeeCompanies != null;
+                    }
+                });
+    }
+
+    public Observable<List<CoffeeCompany>> getCoffeeCompaniesMem(){
+        return Observable.create(new Observable.OnSubscribe<List<CoffeeCompany>>(){
+            @Override
+            public void call(Subscriber<? super List<CoffeeCompany>> subscriber) {
+                if(companies != null && !companies.isEmpty()){
+                    subscriber.onNext(companies);
+                    subscriber.onCompleted();
+                }else{
+                    subscriber.onCompleted();
+                }
+            }
+        });
     }
 
     public CoffeeBag getBagById (String id){
