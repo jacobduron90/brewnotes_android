@@ -2,17 +2,14 @@ package com.android.brewnotes.login;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
 
+import com.android.brewnotes.dashboard.DashboardActivity;
 import com.android.brewnotes.framework.BaseActivity;
 import com.android.brewnotes.R;
-import com.android.brewnotes.User;
-import com.android.brewnotes.dashboard.DashboardActivity;
-import com.android.brewnotes.service.UserManager;
+import com.android.brewnotes.coffeebag.CompanyActivity;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -21,9 +18,6 @@ import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
 public class MainActivity extends BaseActivity implements LoginPresenter.LoginView {
 

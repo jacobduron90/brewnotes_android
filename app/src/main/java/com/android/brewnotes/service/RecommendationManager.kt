@@ -30,16 +30,16 @@ class RecommendationManager @Inject constructor(){
         var memory : Observable<List<Recommendation>> = loadRecommendationMemory()
         var disk : Observable<List<Recommendation>> = loadRecommendationsDisk()
         val full : Observable<List<Recommendation>> = Observable.concat(memory, disk).first { it != null }
-        return full;
+        return full
     }
 
 
-    fun loadRecommendationMemory() : Observable<List<Recommendation>> {
+    private fun loadRecommendationMemory() : Observable<List<Recommendation>> {
         hydrateRecommendations()
         return Observable.just(recommendations)
     }
 
-    fun loadRecommendationsDisk() : Observable<List<Recommendation>>{
+    private fun loadRecommendationsDisk() : Observable<List<Recommendation>>{
         return Observable.just(listOf(Recommendation("", Date(), "", "")))
     }
 

@@ -1,4 +1,4 @@
-package com.android.brewnotes.dashboard;
+package com.android.brewnotes.coffeebag;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;

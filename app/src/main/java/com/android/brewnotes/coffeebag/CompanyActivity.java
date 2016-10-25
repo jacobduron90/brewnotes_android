@@ -1,13 +1,11 @@
-package com.android.brewnotes.dashboard;
+package com.android.brewnotes.coffeebag;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-import com.android.brewnotes.coffeebag.CoffeeCompanyListPresenter;
 import com.android.brewnotes.framework.BaseActivity;
-import com.android.brewnotes.coffeebag.CoffeeBagActivity;
 import com.android.brewnotes.servicelayer.CoffeeCompany;
 import com.android.brewnotes.ErrorHandler;
 import com.android.brewnotes.R;
@@ -21,7 +19,7 @@ import javax.inject.Inject;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class DashboardActivity extends BaseActivity implements CompanyAdapter.CompanyListener, CoffeeCompanyListPresenter.CoffeeCompanyListView {
+public class CompanyActivity extends BaseActivity implements CompanyAdapter.CompanyListener, CoffeeCompanyListPresenter.CoffeeCompanyListView {
 
 
     @Bind(R.id.coffee_companies_list)   RecyclerView companyList;
@@ -53,7 +51,7 @@ public class DashboardActivity extends BaseActivity implements CompanyAdapter.Co
 
     @Override
     public void onCompanyClicked(CoffeeCompany company) {
-        Intent companyIntent = new Intent(DashboardActivity.this, CoffeeBagActivity.class);
+        Intent companyIntent = new Intent(CompanyActivity.this, CoffeeBagActivity.class);
         companyIntent.putExtra("company", company);
         startActivity(companyIntent);
     }
@@ -66,6 +64,6 @@ public class DashboardActivity extends BaseActivity implements CompanyAdapter.Co
 
     @Override
     public void showErrorLoadingList(@NotNull Throwable t) {
-        ErrorHandler.handleError(t, DashboardActivity.this);
+        ErrorHandler.handleError(t, CompanyActivity.this);
     }
 }
