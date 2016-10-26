@@ -23,15 +23,15 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class CoffeeBagActivity extends BaseActivity implements CoffeeBagListPresenter.CoffeeBagListView{
     private final String TAG = "CoffeeBagActivity";
 
 
-    @Bind(R.id.coffee_bag_list) RecyclerView coffeeBagList;
-    @Bind(R.id.coffee_bag_refresh) SwipeRefreshLayout swipeRefreshLayout;
+    @BindView(R.id.coffee_bag_list) RecyclerView coffeeBagList;
+    @BindView(R.id.coffee_bag_refresh) SwipeRefreshLayout swipeRefreshLayout;
     @Inject     CoffeeBagListPresenter presenter;
                 CoffeeCompany company;
     private     CoffeeBagAdapter adapter;

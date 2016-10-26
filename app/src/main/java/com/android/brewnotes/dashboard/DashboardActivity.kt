@@ -9,7 +9,8 @@ import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.Toolbar
 import android.util.Log
 import android.widget.Toast
-import butterknife.Bind
+import butterknife.BindView
+import butterknife.ButterKnife
 import com.android.brewnotes.ErrorHandler
 
 import com.android.brewnotes.R
@@ -27,7 +28,7 @@ class DashboardActivity : BaseActivity(), DashboardPresenter.DashboardView {
     @Inject lateinit var recAdapter : RecommendationAdapter
     lateinit var recList : RecyclerView
     lateinit var userCard : ProfileCard
-//    @Bind(R.id.fab) lateinit var fab : FloatingActionButton
+    @BindView(R.id.fab) lateinit var fab : FloatingActionButton
 
 
 
@@ -36,6 +37,7 @@ class DashboardActivity : BaseActivity(), DashboardPresenter.DashboardView {
         dashPresenter.attach(this)
 
         setContentView(R.layout.activity_profile)
+        ButterKnife.bind(this)
         val toolbar = findViewById(R.id.toolbar) as Toolbar
         setSupportActionBar(toolbar)
 
@@ -43,7 +45,7 @@ class DashboardActivity : BaseActivity(), DashboardPresenter.DashboardView {
         recList.layoutManager = LinearLayoutManager(this)
         recList?.adapter = recAdapter
         userCard = findViewById(R.id.user_card) as ProfileCard
-//        fab.setOnClickListener { goToCoffeeSearch() }
+        fab.setOnClickListener { goToCoffeeSearch() }
     }
 
     override fun onResume() {

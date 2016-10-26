@@ -12,7 +12,7 @@ import com.android.brewnotes.User;
 import com.bumptech.glide.Glide;
 
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
@@ -23,10 +23,10 @@ public class ProfileCard extends CardView{
 
 
 
-    @Bind(R.id.profile_photo)           ImageView profilePhoto;
-    @Bind(R.id.user_card_name)          TextView userName;
-    @Bind(R.id.user_checkin_counter)    TextView checkinCounter;
-    @Bind(R.id.user_following_counter)  TextView followingCounter;
+    @BindView(R.id.profile_photo)           ImageView profilePhoto;
+    @BindView(R.id.user_card_name)          TextView userName;
+    @BindView(R.id.user_checkin_counter)    TextView checkinCounter;
+    @BindView(R.id.user_following_counter)  TextView followingCounter;
 
     public ProfileCard(Context context) {
         super(context);

@@ -16,13 +16,13 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class CompanyActivity extends BaseActivity implements CompanyAdapter.CompanyListener, CoffeeCompanyListPresenter.CoffeeCompanyListView {
 
 
-    @Bind(R.id.coffee_companies_list)   RecyclerView companyList;
+    @BindView(R.id.coffee_companies_list)   RecyclerView companyList;
     @Inject     CompanyAdapter adapter;
     @Inject     CoffeeCompanyListPresenter presenter;
 

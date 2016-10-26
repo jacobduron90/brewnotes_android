@@ -24,21 +24,21 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class CoffeeBagDetailActivity extends BaseActivity implements CoffeeDetailPresenter.CoffeeDetailView{
 
     public static final String EXTRA_COFFEE_BAG_DETAIL = "extra_coffee_bag_detail";
 
-    @Bind(R.id.roast_row)                   View roastRow;
-    @Bind(R.id.country_row)                 View countryRow;
-    @Bind(R.id.coffee_bag_company_name)     TextView companyNameValue;
-    @Bind(R.id.coffee_detail_country)       TextView countryValue;
-    @Bind(R.id.coffee_detail_roast)         TextView roastValue;
-    @Bind(R.id.coffee_detail_hero_photo)    ImageView heroPhoto;
-    @Bind(R.id.collapsing_toolbar)          CollapsingToolbarLayout collapseBar;
-    @Bind(R.id.recommendation_container)    RecommendationContainer container;
+    @BindView(R.id.roast_row)                   View roastRow;
+    @BindView(R.id.country_row)                 View countryRow;
+    @BindView(R.id.coffee_bag_company_name)     TextView companyNameValue;
+    @BindView(R.id.coffee_detail_country)       TextView countryValue;
+    @BindView(R.id.coffee_detail_roast)         TextView roastValue;
+    @BindView(R.id.coffee_detail_hero_photo)    ImageView heroPhoto;
+    @BindView(R.id.collapsing_toolbar)          CollapsingToolbarLayout collapseBar;
+    @BindView(R.id.recommendation_container)    RecommendationContainer container;
 
 
 
