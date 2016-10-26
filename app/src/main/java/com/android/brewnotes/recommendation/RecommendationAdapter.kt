@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import butterknife.BindView
+import butterknife.ButterKnife
 import com.android.brewnotes.R
 import com.android.brewnotes.servicelayer.Recommendation
 import com.bumptech.glide.Glide
@@ -39,6 +41,7 @@ class RecommendationAdapter @Inject constructor() : RecyclerView.Adapter<Recomme
     }
 
     override fun onBindViewHolder(holder: RecHolder?, position: Int) {
+
         var rec = recList?.get(position)
         holder?.userName?.setText(rec?.userName)
         holder?.userComment?.setText(rec?.comment)
@@ -58,14 +61,12 @@ class RecommendationAdapter @Inject constructor() : RecyclerView.Adapter<Recomme
 
     class RecHolder(v : View) : RecyclerView.ViewHolder(v){
 
-        lateinit var userName : TextView
-        lateinit var userComment : TextView
-        lateinit var userPhoto : ImageView
+        @BindView(R.id.recommendation_user_name)    lateinit var userName : TextView
+        @BindView(R.id.recommendation_comment)      lateinit var userComment : TextView
+        @BindView(R.id.recommendation_user_picture) lateinit var userPhoto : ImageView
 
         fun init(){
-            userName = itemView.findViewById(R.id.recommendation_user_name) as TextView
-            userComment = itemView.findViewById(R.id.recommendation_comment) as TextView
-            userPhoto = itemView.findViewById(R.id.recommendation_user_picture) as ImageView
+            ButterKnife.bind(this, itemView)
         }
 
 

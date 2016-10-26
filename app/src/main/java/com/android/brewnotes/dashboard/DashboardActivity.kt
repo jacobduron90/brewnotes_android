@@ -15,6 +15,7 @@ import com.android.brewnotes.ErrorHandler
 
 import com.android.brewnotes.R
 import com.android.brewnotes.User
+import com.android.brewnotes.coffeebag.CompanyActivity
 import com.android.brewnotes.framework.BaseActivity
 import com.android.brewnotes.recommendation.RecommendationAdapter
 import com.android.brewnotes.servicelayer.Recommendation
@@ -71,6 +72,6 @@ class DashboardActivity : BaseActivity(), DashboardPresenter.DashboardView {
     }
 
     fun goToCoffeeSearch() {
-
+        startActivity(CompanyActivity.getCompanyActivityIntent(this));
     }
 }

@@ -1,5 +1,6 @@
 package com.android.brewnotes.coffeebag;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -65,5 +66,10 @@ public class CompanyActivity extends BaseActivity implements CompanyAdapter.Comp
     @Override
     public void showErrorLoadingList(@NotNull Throwable t) {
         ErrorHandler.handleError(t, CompanyActivity.this);
+    }
+
+    public static Intent getCompanyActivityIntent(Context context){
+        Intent companyActivityIntent = new Intent(context, CompanyActivity.class);
+        return companyActivityIntent;
     }
 }
