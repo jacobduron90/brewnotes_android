@@ -2,12 +2,14 @@ package com.android.brewnotes.dashboard
 
 import android.os.Bundle
 import android.os.PersistableBundle
+import android.support.design.widget.FloatingActionButton
 import android.support.v7.widget.CardView
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.Toolbar
 import android.util.Log
 import android.widget.Toast
+import butterknife.Bind
 import com.android.brewnotes.ErrorHandler
 
 import com.android.brewnotes.R
@@ -25,6 +27,7 @@ class DashboardActivity : BaseActivity(), DashboardPresenter.DashboardView {
     @Inject lateinit var recAdapter : RecommendationAdapter
     lateinit var recList : RecyclerView
     lateinit var userCard : ProfileCard
+//    @Bind(R.id.fab) lateinit var fab : FloatingActionButton
 
 
 
@@ -40,6 +43,7 @@ class DashboardActivity : BaseActivity(), DashboardPresenter.DashboardView {
         recList.layoutManager = LinearLayoutManager(this)
         recList?.adapter = recAdapter
         userCard = findViewById(R.id.user_card) as ProfileCard
+//        fab.setOnClickListener { goToCoffeeSearch() }
     }
 
     override fun onResume() {
@@ -62,5 +66,9 @@ class DashboardActivity : BaseActivity(), DashboardPresenter.DashboardView {
 
     override fun displayRecError() {
         Toast.makeText(this, "Error loading recommendation", Toast.LENGTH_SHORT).show()
+    }
+
+    fun goToCoffeeSearch() {
+
     }
 }
