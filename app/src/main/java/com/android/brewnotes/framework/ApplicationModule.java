@@ -5,6 +5,7 @@ import com.android.brewnotes.coffeebag.CoffeeBagDetailActivity;
 import com.android.brewnotes.coffeebag.CompanyAdapter;
 import com.android.brewnotes.coffeebag.CompanyActivity;
 import com.android.brewnotes.dashboard.DashboardActivity;
+import com.android.brewnotes.recommendation.AddRecommendationActivity;
 import com.android.brewnotes.recommendation.RecommendationSummaryActivity;
 import com.android.brewnotes.service.CoffeeBagManager;
 import com.android.brewnotes.ErrorHandler;
@@ -36,7 +37,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
                 ErrorHandler.class,
                 CompanyActivity.class,
                 RecommendationSummaryActivity.class,
-                DashboardActivity.class
+                DashboardActivity.class,
+                AddRecommendationActivity.class
 
         },
         staticInjections = {

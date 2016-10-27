@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent">
-    <Button
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:id="@+id/recommendation_see_more"
-        android:layout_margin="32dp"
-        android:text="Read More Recommendations"
-        android:background="?colorAccent"
-        android:visibility="visible"/>
+        android:text="+ See More"
+        android:visibility="visible"
+        android:gravity="center"
+        android:textColor="#595959"/>
 </merge>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <declare-styleable name="MultiSelectionCard">
+        <attr name="selectionType">
+            <enum name="Aroma" value="0"/>
+            <enum name="Body" value="1"/>
+            <enum name="Flavor" value="2"/>
+            <enum name="Finish" value="3"/>
+        </attr>
+    </declare-styleable>
+</resources>

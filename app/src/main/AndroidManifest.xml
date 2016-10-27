@@ -13,7 +13,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".login.MainActivity"
-            android:theme="@style/AppTheme"/>
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".coffeebag.CoffeeBagActivity"
             android:label="@string/title_activity_coffee_bag"
@@ -33,6 +33,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".recommendation.AddRecommendationActivity"></activity>
     </application>
 
 </manifest>

@@ -1,6 +1,5 @@
 package com.android.brewnotes.coffeebag;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -13,6 +12,7 @@ import android.widget.Toast;
 
 import com.android.brewnotes.R;
 import com.android.brewnotes.framework.BaseActivity;
+import com.android.brewnotes.recommendation.AddRecommendationActivity;
 import com.android.brewnotes.recommendation.RecommendationSummaryActivity;
 import com.android.brewnotes.servicelayer.CoffeeBag;
 import com.android.brewnotes.servicelayer.Recommendation;
@@ -26,6 +26,7 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class CoffeeBagDetailActivity extends BaseActivity implements CoffeeDetailPresenter.CoffeeDetailView{
 
@@ -109,6 +110,11 @@ public class CoffeeBagDetailActivity extends BaseActivity implements CoffeeDetai
         }
 
 
+    }
+
+    @OnClick(R.id.add_rec_button)
+    public void goToAddRec(){
+        startActivity(AddRecommendationActivity.Companion.getLaunchIntent(this, presenter.getBag()._id));
     }
 
     @Override

@@ -35,11 +35,13 @@ public class RecommendationContainer extends LinearLayout {
 
 
     public void displayRecommendations(List<Recommendation> recs){
+        this.removeAllViews();
         for(int i = 0; i < 2; i++){
             View recRow = LayoutInflater.from(getContext()).inflate(R.layout.row_detail_recommendation, this, false);
             hydrateRow(recRow, recs.get(i));
             this.addView(recRow);
         }
+
         View button = LayoutInflater.from(getContext()).inflate(R.layout.see_more_button, this, true);
         if(recs.size() > 2){
             button.setVisibility(View.VISIBLE);
