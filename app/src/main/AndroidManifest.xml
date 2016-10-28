@@ -22,8 +22,12 @@
             android:name=".coffeebag.CoffeeBagDetailActivity"
             android:label="@string/title_activity_coffee_bag_detail"
             android:theme="@style/AppTheme" />
-        <activity android:name=".coffeebag.CompanyActivity" />
-        <activity android:name=".recommendation.RecommendationSummaryActivity" />
+        <activity
+            android:name=".coffeebag.CompanyActivity"
+            android:theme="@style/AppTheme"/>
+        <activity
+            android:theme="@style/AppTheme"
+            android:name=".checkins.CheckInSummaryActivity" />
         <activity
             android:name=".dashboard.DashboardActivity"
             android:theme="@style/AppTheme">
@@ -33,7 +37,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".recommendation.AddRecommendationActivity"></activity>
+        <activity
+            android:name=".checkins.AddCheckInActivity"
+            android:theme="@style/AppTheme"/>
     </application>
 
 </manifest>

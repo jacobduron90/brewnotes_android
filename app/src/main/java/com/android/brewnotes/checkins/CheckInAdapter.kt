@@ -1,4 +1,4 @@
-package com.android.brewnotes.recommendation
+package com.android.brewnotes.checkins
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -9,6 +9,7 @@ import android.widget.TextView
 import butterknife.BindView
 import butterknife.ButterKnife
 import com.android.brewnotes.R
+import com.android.brewnotes.servicelayer.CheckIn
 import com.android.brewnotes.servicelayer.Recommendation
 import com.bumptech.glide.Glide
 import javax.inject.Inject
@@ -17,14 +18,14 @@ import javax.inject.Inject
 /**
  * Created by jacobduron on 10/24/16.
  */
-class RecommendationAdapter @Inject constructor() : RecyclerView.Adapter<RecommendationAdapter.RecHolder>(){
+class CheckInAdapter @Inject constructor() : RecyclerView.Adapter<CheckInAdapter.RecHolder>(){
 
 
 
-    var recList : MutableList<Recommendation>? = mutableListOf()
+    var recList : MutableList<CheckIn>? = mutableListOf()
 
 
-    fun setList(list : List<Recommendation>?){
+    fun setList(list : List<CheckIn>?){
         recList?.clear();
         if(list != null){
             recList?.addAll(list)
@@ -42,12 +43,12 @@ class RecommendationAdapter @Inject constructor() : RecyclerView.Adapter<Recomme
 
     override fun onBindViewHolder(holder: RecHolder?, position: Int) {
 
-        var rec = recList?.get(position)
-        holder?.userName?.setText(rec?.userName)
-        holder?.userComment?.setText(rec?.comment)
-        if(rec?.userIconUrl != null){
+        var checkIn = recList?.get(position)
+        holder?.userName?.setText(checkIn?.userName)
+        holder?.userComment?.setText(checkIn?.rec?.comment)
+        if(checkIn?.userIcon != null){
             Glide.with(holder?.itemView?.context)
-                .load(rec?.userIconUrl)
+                .load(checkIn?.userIcon)
                 .into(holder?.userPhoto)
         }
     }

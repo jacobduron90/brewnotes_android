@@ -12,11 +12,12 @@ import android.widget.Toast;
 
 import com.android.brewnotes.R;
 import com.android.brewnotes.framework.BaseActivity;
-import com.android.brewnotes.recommendation.AddRecommendationActivity;
-import com.android.brewnotes.recommendation.RecommendationSummaryActivity;
+import com.android.brewnotes.checkins.AddCheckInActivity;
+import com.android.brewnotes.checkins.CheckInSummaryActivity;
+import com.android.brewnotes.servicelayer.CheckIn;
 import com.android.brewnotes.servicelayer.CoffeeBag;
 import com.android.brewnotes.servicelayer.Recommendation;
-import com.android.brewnotes.widgets.RecommendationContainer;
+import com.android.brewnotes.widgets.CheckInContainer;
 import com.bumptech.glide.Glide;
 
 
@@ -39,7 +40,8 @@ public class CoffeeBagDetailActivity extends BaseActivity implements CoffeeDetai
     @BindView(R.id.coffee_detail_roast)         TextView roastValue;
     @BindView(R.id.coffee_detail_hero_photo)    ImageView heroPhoto;
     @BindView(R.id.collapsing_toolbar)          CollapsingToolbarLayout collapseBar;
-    @BindView(R.id.recommendation_container)    RecommendationContainer container;
+    @BindView(R.id.recommendation_container)
+    CheckInContainer container;
 
 
 
@@ -98,23 +100,21 @@ public class CoffeeBagDetailActivity extends BaseActivity implements CoffeeDetai
     }
 
     @Override
-    public void setRecommendations(@Nullable List<? extends Recommendation> recs) {
+    public void setCheckIns(@org.jetbrains.annotations.Nullable List<CheckIn> recs) {
         if(recs != null){
-            container.displayRecommendations((List<Recommendation>)recs);
+            container.displayCheckIns(recs);
             findViewById(R.id.recommendation_see_more).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    startActivity(RecommendationSummaryActivity.Companion.getIntent(CoffeeBagDetailActivity.this, presenter.getBag()._id));
+                    startActivity(CheckInSummaryActivity.Companion.getIntent(CoffeeBagDetailActivity.this, presenter.getBag()._id));
                 }
             });
         }
-
-
     }
 
     @OnClick(R.id.add_rec_button)
     public void goToAddRec(){
-        startActivity(AddRecommendationActivity.Companion.getLaunchIntent(this, presenter.getBag()._id));
+        startActivity(AddCheckInActivity.Companion.getLaunchIntent(this, presenter.getBag()._id));
     }
 
     @Override

@@ -1,9 +1,10 @@
 package com.android.brewnotes.dashboard
 
 import android.util.Log
-import com.android.brewnotes.User
-import com.android.brewnotes.service.RecommendationManager
+import com.android.brewnotes.servicelayer.User
+import com.android.brewnotes.service.CheckInManager
 import com.android.brewnotes.service.UserManager
+import com.android.brewnotes.servicelayer.CheckIn
 import com.android.brewnotes.servicelayer.Recommendation
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
@@ -12,7 +13,7 @@ import javax.inject.Inject
 /**
  * Created by jacobduron on 10/24/16.
  */
-class DashboardPresenter @Inject constructor(val userManager:UserManager, val recManager : RecommendationManager){
+class DashboardPresenter @Inject constructor(val userManager:UserManager, val recManager : CheckInManager){
 
     var dashView : DashboardView? = null
 
@@ -32,7 +33,7 @@ class DashboardPresenter @Inject constructor(val userManager:UserManager, val re
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe { dashView?.displayUserInfo(it) }
 
-        recManager.loadRecommendations("")
+        recManager.loadCheckIns("")
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe (
@@ -49,7 +50,7 @@ class DashboardPresenter @Inject constructor(val userManager:UserManager, val re
 
     interface DashboardView{
         fun displayUserInfo(user : User?)
-        fun displayRecInfo(recList : MutableList<Recommendation>)
+        fun displayRecInfo(recList : MutableList<CheckIn>)
         fun displayRecError()
 
     }

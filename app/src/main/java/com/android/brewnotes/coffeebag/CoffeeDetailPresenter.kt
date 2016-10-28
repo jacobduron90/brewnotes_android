@@ -1,7 +1,8 @@
 package com.android.brewnotes.coffeebag
 
 import com.android.brewnotes.service.CoffeeBagManager
-import com.android.brewnotes.service.RecommendationManager
+import com.android.brewnotes.service.CheckInManager
+import com.android.brewnotes.servicelayer.CheckIn
 import com.android.brewnotes.servicelayer.CoffeeBag
 import com.android.brewnotes.servicelayer.Recommendation
 import javax.inject.Inject
@@ -9,7 +10,7 @@ import javax.inject.Inject
 /**
  * Created by jacobduron on 10/17/16.
  */
-class CoffeeDetailPresenter @Inject constructor(val cm : CoffeeBagManager, val rm : RecommendationManager){
+class CoffeeDetailPresenter @Inject constructor(val cm : CoffeeBagManager, val rm : CheckInManager){
 
     var detailView : CoffeeDetailView? = null;
     var bag : CoffeeBag? = null;
@@ -36,14 +37,14 @@ class CoffeeDetailPresenter @Inject constructor(val cm : CoffeeBagManager, val r
     fun loadRecommendations() {
         var id = bag?._id;
         if(id != null){
-            rm.loadRecommendations(id)
+            rm.loadCheckIns(id)
                     .subscribe(
-                            {detailView?.setRecommendations(it)},
-                            {detailView?.setRecommendations(null)},
+                            {detailView?.setCheckIns(it)},
+                            {detailView?.setCheckIns(null)},
                             {}
                     )
         }else{
-            detailView?.setRecommendations(null);
+            detailView?.setCheckIns(null);
         }
 
     }
@@ -51,6 +52,6 @@ class CoffeeDetailPresenter @Inject constructor(val cm : CoffeeBagManager, val r
    interface CoffeeDetailView {
         fun setBagDetails(bag : CoffeeBag?)
         fun errorLoadingBag()
-        fun setRecommendations(recs : List<Recommendation>?)
+        fun setCheckIns(recs : List<CheckIn>?)
     }
 }

@@ -7,12 +7,11 @@ import android.util.Log;
 import com.android.brewnotes.servicelayer.AuthenticateRequest;
 
 import com.android.brewnotes.framework.BrewApplication;
-import com.android.brewnotes.User;
+import com.android.brewnotes.servicelayer.User;
 
 import rx.Observable;
 import rx.Subscriber;
 import rx.functions.Action1;
-import rx.functions.Func0;
 
 /**
  * Created by jacobduron on 9/5/16.

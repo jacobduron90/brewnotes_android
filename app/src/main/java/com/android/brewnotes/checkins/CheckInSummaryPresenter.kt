@@ -1,6 +1,7 @@
-package com.android.brewnotes.recommendation
+package com.android.brewnotes.checkins
 
-import com.android.brewnotes.service.RecommendationManager
+import com.android.brewnotes.service.CheckInManager
+import com.android.brewnotes.servicelayer.CheckIn
 import com.android.brewnotes.servicelayer.Recommendation
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
@@ -9,7 +10,7 @@ import javax.inject.Inject
 /**
  * Created by jacobduron on 10/24/16.
  */
-class RecommendationSummaryPresenter @Inject constructor(val recManager : RecommendationManager) {
+class CheckInSummaryPresenter @Inject constructor(val recManager : CheckInManager) {
 
     var summaryView : RecommenationSummaryView? = null
 
@@ -22,12 +23,12 @@ class RecommendationSummaryPresenter @Inject constructor(val recManager : Recomm
     }
 
 
-    fun loadRecs(id : String){
-        recManager.loadRecommendations(id)
+    fun loadChecks(id : String){
+        recManager.loadCheckIns(id)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
-                    {summaryView?.loadRecs(it)},
+                    {summaryView?.setChecks(it)},
                     {},
                     {}
             )
@@ -35,6 +36,6 @@ class RecommendationSummaryPresenter @Inject constructor(val recManager : Recomm
 
 
     public interface RecommenationSummaryView{
-        fun loadRecs(list : List<Recommendation>?)
+        fun setChecks(list : List<CheckIn>?)
     }
 }

@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.android.brewnotes.R;
+import com.android.brewnotes.servicelayer.CheckIn;
 import com.android.brewnotes.servicelayer.Recommendation;
 import com.bumptech.glide.Glide;
 
@@ -18,23 +19,23 @@ import java.util.List;
  * Created by jacobduron on 10/20/16.
  */
 
-public class RecommendationContainer extends LinearLayout {
+public class CheckInContainer extends LinearLayout {
 
 
-    public RecommendationContainer(Context context) {
+    public CheckInContainer(Context context) {
         super(context);
     }
 
-    public RecommendationContainer(Context context, AttributeSet attrs) {
+    public CheckInContainer(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public RecommendationContainer(Context context, AttributeSet attrs, int defStyleAttr) {
+    public CheckInContainer(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
 
-    public void displayRecommendations(List<Recommendation> recs){
+    public void displayCheckIns(List<CheckIn> recs){
         this.removeAllViews();
         for(int i = 0; i < 2; i++){
             View recRow = LayoutInflater.from(getContext()).inflate(R.layout.row_detail_recommendation, this, false);
@@ -50,17 +51,20 @@ public class RecommendationContainer extends LinearLayout {
         }
     }
 
-    void hydrateRow(View row, Recommendation data){
+    void hydrateRow(View row, CheckIn data){
         TextView recUserName = (TextView)row.findViewById(R.id.recommendation_user_name);
         TextView recUserComment = (TextView)row.findViewById(R.id.recommendation_comment);
         ImageView recUserProfile = (ImageView)row.findViewById(R.id.recommendation_user_picture);
 
-        recUserName.setText(data.userName);
-        recUserComment.setText(data.comment);
+        recUserName.setText(data.getUserName());
+        if(data.getRec() != null){
+            recUserComment.setText(data.getRec().comment);
+        }
 
-        if(data.userIconUrl != null){
+
+        if(data.getUserIcon() != null){
             Glide.with(getContext())
-                    .load(data.userIconUrl)
+                    .load(data.getUserIcon())
                     .into(recUserProfile);
         }
 

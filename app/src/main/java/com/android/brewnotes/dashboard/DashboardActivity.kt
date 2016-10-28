@@ -14,10 +14,11 @@ import butterknife.ButterKnife
 import com.android.brewnotes.ErrorHandler
 
 import com.android.brewnotes.R
-import com.android.brewnotes.User
+import com.android.brewnotes.servicelayer.User
 import com.android.brewnotes.coffeebag.CompanyActivity
 import com.android.brewnotes.framework.BaseActivity
-import com.android.brewnotes.recommendation.RecommendationAdapter
+import com.android.brewnotes.checkins.CheckInAdapter
+import com.android.brewnotes.servicelayer.CheckIn
 import com.android.brewnotes.servicelayer.Recommendation
 import com.android.brewnotes.widgets.ProfileCard
 import javax.inject.Inject
@@ -26,7 +27,7 @@ class DashboardActivity : BaseActivity(), DashboardPresenter.DashboardView {
 
 
     @Inject lateinit  var dashPresenter : DashboardPresenter
-    @Inject lateinit var recAdapter : RecommendationAdapter
+    @Inject lateinit var recAdapter : CheckInAdapter
     lateinit var recList : RecyclerView
     lateinit var userCard : ProfileCard
     @BindView(R.id.fab) lateinit var fab : FloatingActionButton
@@ -62,7 +63,7 @@ class DashboardActivity : BaseActivity(), DashboardPresenter.DashboardView {
         userCard?.setData(user)
     }
 
-    override fun displayRecInfo(recList: MutableList<Recommendation>) {
+    override fun displayRecInfo(recList: MutableList<CheckIn>) {
         recAdapter?.setList(recList)
     }
 

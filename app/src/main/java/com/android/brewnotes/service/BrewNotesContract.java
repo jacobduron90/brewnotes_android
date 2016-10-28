@@ -3,7 +3,7 @@ package com.android.brewnotes.service;
 import com.android.brewnotes.servicelayer.AuthenticateRequest;
 import com.android.brewnotes.servicelayer.CoffeeBag;
 import com.android.brewnotes.servicelayer.CoffeeCompany;
-import com.android.brewnotes.User;
+import com.android.brewnotes.servicelayer.User;
 
 import java.util.List;
 

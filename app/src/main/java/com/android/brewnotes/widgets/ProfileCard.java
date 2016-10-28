@@ -8,7 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.brewnotes.R;
-import com.android.brewnotes.User;
+import com.android.brewnotes.servicelayer.User;
 import com.bumptech.glide.Glide;
 
 

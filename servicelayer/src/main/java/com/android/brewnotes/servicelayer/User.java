@@ -1,4 +1,6 @@
-package com.android.brewnotes;
+package com.android.brewnotes.servicelayer;
+
+import java.util.List;
 
 /**
  * Created by jacobduron on 9/4/16.
@@ -11,6 +13,8 @@ public class User {
     public String lastName;
     public int followingCount;
     public int checkInCount;
+
+    public List<Recommendation> recs;
 
 
 

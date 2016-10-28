@@ -1,4 +1,4 @@
-package com.android.brewnotes.recommendation
+package com.android.brewnotes.checkins
 
 import android.content.Context
 import android.content.Intent
@@ -10,13 +10,14 @@ import android.support.v7.widget.RecyclerView
 import butterknife.ButterKnife
 import com.android.brewnotes.R
 import com.android.brewnotes.framework.BaseActivity
+import com.android.brewnotes.servicelayer.CheckIn
 import com.android.brewnotes.servicelayer.Recommendation
 import javax.inject.Inject
 
-class RecommendationSummaryActivity : RecommendationSummaryPresenter.RecommenationSummaryView, BaseActivity(){
+class CheckInSummaryActivity : CheckInSummaryPresenter.RecommenationSummaryView, BaseActivity(){
 
-    @Inject lateinit var adapter : RecommendationAdapter;
-    @Inject lateinit var presenter : RecommendationSummaryPresenter
+    @Inject lateinit var adapter : CheckInAdapter;
+    @Inject lateinit var presenter : CheckInSummaryPresenter
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,7 +33,7 @@ class RecommendationSummaryActivity : RecommendationSummaryPresenter.Recommenati
 
     override fun onPostResume() {
         super.onPostResume()
-        presenter?.loadRecs("someString")
+        presenter?.loadChecks("someString")
     }
 
     override fun onDestroy() {
@@ -40,13 +41,15 @@ class RecommendationSummaryActivity : RecommendationSummaryPresenter.Recommenati
         super.onDestroy()
     }
 
-    override fun loadRecs(list: List<Recommendation>?) {
+
+
+    override fun setChecks(list: List<CheckIn>?) {
         adapter?.setList(list)
     }
 
     companion object{
         fun getIntent(context : Context, id : String) : Intent {
-            var intent = Intent(context, RecommendationSummaryActivity::class.java)
+            var intent = Intent(context, CheckInSummaryActivity::class.java)
             intent.putExtra("bag_id", id)
             return intent
         }

@@ -2,7 +2,7 @@ package com.android.brewnotes
 
 import com.android.brewnotes.coffeebag.CoffeeDetailPresenter
 import com.android.brewnotes.service.CoffeeBagManager
-import com.android.brewnotes.service.RecommendationManager
+import com.android.brewnotes.service.CheckInManager
 import com.android.brewnotes.servicelayer.CoffeeBag
 import org.junit.Before
 import org.junit.Test
@@ -16,7 +16,7 @@ class CoffeeBagDetailTest {
 
 
     var mockCoffeeManager : CoffeeBagManager? = null
-    var mockRecommendationManager : RecommendationManager? = null
+    var mockRecommendationManager : CheckInManager? = null
     var mockDetailView : CoffeeDetailPresenter.CoffeeDetailView? = null
     var presenter : CoffeeDetailPresenter? = null
 
@@ -24,7 +24,7 @@ class CoffeeBagDetailTest {
         RxSchedulerHelper.setup()
         mockCoffeeManager = Mockito.mock(CoffeeBagManager::class.java)
         mockDetailView = Mockito.mock(CoffeeDetailPresenter.CoffeeDetailView::class.java)
-        mockRecommendationManager = Mockito.mock(RecommendationManager::class.java)
+        mockRecommendationManager = Mockito.mock(CheckInManager::class.java)
         presenter = CoffeeDetailPresenter(mockCoffeeManager!!, mockRecommendationManager!!)
     }
 

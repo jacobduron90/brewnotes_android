@@ -1,9 +1,8 @@
 package com.android.brewnotes;
 
 import com.android.brewnotes.login.LoginPresenter;
-import com.android.brewnotes.service.BrewNotesContract;
 import com.android.brewnotes.service.UserManager;
-import com.android.brewnotes.servicelayer.AuthenticateRequest;
+import com.android.brewnotes.servicelayer.User;
 
 import org.junit.After;
 import org.junit.Before;
@@ -12,11 +11,7 @@ import org.junit.Test;
 import rx.Observable;
 
 import static org.mockito.Matchers.any;
-import static org.mockito.Matchers.anyObject;
 import static org.mockito.Matchers.anyString;
-import static org.mockito.Mockito.atLeast;
-import static org.mockito.Mockito.atLeastOnce;
-import static org.mockito.Mockito.atMost;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;

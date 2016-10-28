@@ -1,6 +1,6 @@
 package com.android.brewnotes.login
 
-import com.android.brewnotes.User
+import com.android.brewnotes.servicelayer.User
 import com.android.brewnotes.service.UserManager
 import rx.Subscriber
 import rx.Subscription

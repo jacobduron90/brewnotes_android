@@ -5,10 +5,11 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     tools:text="Buttery Flavor"
-    android:textSize="16sp"
-    android:background="@color/colorAccent"
+    android:textSize="18sp"
+    android:background="@drawable/bg_trait_toggle"
     android:padding="6dp"
     android:id="@android:id/text1"
     android:layout_margin="4dp"
+    android:textColor="@color/dark_brown"
     />
 
