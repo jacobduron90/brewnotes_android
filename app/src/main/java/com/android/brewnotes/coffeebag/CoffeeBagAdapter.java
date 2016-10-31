@@ -4,10 +4,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.brewnotes.R;
 import com.android.brewnotes.servicelayer.CoffeeBag;
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,13 +46,19 @@ public class CoffeeBagAdapter extends RecyclerView.Adapter<CoffeeBagAdapter.Coff
 
     @Override
     public void onBindViewHolder(CoffeeBagViewHolder holder, final int position) {
-        holder.bagName.setText(coffeeBagList.get(position).name);
+        CoffeeBag bag = coffeeBagList.get(position);
+        holder.bagName.setText(bag.name);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 clickListener.onBagClicked(coffeeBagList.get(position));
             }
         });
+        if(bag.photo.iconPhoto != null){
+            Glide.with(holder.itemView.getContext())
+                    .load(bag.photo.iconPhoto)
+                    .into(holder.bagPhoto);
+        }
 
     }
 
@@ -61,6 +69,7 @@ public class CoffeeBagAdapter extends RecyclerView.Adapter<CoffeeBagAdapter.Coff
 
     public static class CoffeeBagViewHolder extends RecyclerView.ViewHolder{
         public TextView bagName;
+        public ImageView bagPhoto;
         public CoffeeBagViewHolder(View itemView) {
             super(itemView);
             bagName = (TextView)itemView.findViewById(R.id.bag_name);

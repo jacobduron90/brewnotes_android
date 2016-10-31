@@ -54,7 +54,7 @@ public class CheckInContainer extends LinearLayout {
     void hydrateRow(View row, CheckIn data){
         TextView recUserName = (TextView)row.findViewById(R.id.recommendation_user_name);
         TextView recUserComment = (TextView)row.findViewById(R.id.recommendation_comment);
-        ImageView recUserProfile = (ImageView)row.findViewById(R.id.recommendation_user_picture);
+        ImageView recUserProfile = (ImageView)row.findViewById(R.id.recommendation_user_photo);
 
         recUserName.setText(data.getUserName());
         if(data.getRec() != null){

@@ -1,45 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="100dp">
+    android:layout_height="wrap_content"
+    android:elevation="4dp"
+    android:layout_marginTop="4dp"
+    android:layout_marginBottom="4dp">
 
-    <LinearLayout
 
-        android:orientation="horizontal" android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
         <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
             tools:layout_marginStart="16dp"
             android:src="@mipmap/ic_launcher"
-            android:layout_gravity="center"
-            android:id="@+id/recommendation_user_picture"
+            android:layout_gravity="start"
+            android:id="@+id/recommendation_bag_logo"
+
             />
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginStart="92dp">
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:text="Osk Kosh"
-                android:textSize="18sp"
-                android:layout_marginTop="24dp"
-                android:id="@+id/recommendation_user_name"/>
-            <TextView
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="Cuberow"
+                    android:textSize="24sp"
+                    android:layout_marginTop="24dp"
+                    android:id="@+id/recommendation_bag_name"
+                    android:textStyle="bold"/>
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:id="@+id/recommendation_uploaded_photo"
+                    android:src="@drawable/grizz"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitStart"
+                    android:layout_marginTop="16dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="Bacon ipsum dolor amet burgdoggen turducken dolore shank, quis occaecat short loin consequat lorem pork in. Consectetur strip steak prosciutto, adipisicing jowl corned beef pork chop capicola aliquip proident dolore pariatur ut."
+                    android:textSize="22sp"
+                    android:layout_marginTop="24dp"
+                    android:id="@+id/recommendation_comment"
+                    android:maxLines="3"
+                    android:ellipsize="end"
+                    android:layout_marginEnd="16dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="9.2/10"
+                    android:layout_marginTop="8dp"
+                    android:lines="1"
+                    android:ellipsize="end"
+                    android:id="@+id/recommendation_rating"
+
+                    android:textSize="20sp"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:text="Osk Kosh"
-                android:layout_marginTop="12dp"
-                android:lines="1"
-                android:ellipsize="end"
-                android:id="@+id/recommendation_comment"/>
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginEnd="16dp"
+                android:layout_gravity="end">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="User #1"
+                    android:textSize="18sp"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="8dp"
+                    android:id="@+id/recommendation_user_name"/>
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="35dp"
+                    tools:text="Osk Kosh"
+                    android:lines="1"
+                    android:ellipsize="end"
+                    android:id="@+id/recommendation_user_photo"
+                    tools:src="@drawable/missing_photo_drawable"/>
+
+
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
-</FrameLayout>
+</android.support.v7.widget.CardView>

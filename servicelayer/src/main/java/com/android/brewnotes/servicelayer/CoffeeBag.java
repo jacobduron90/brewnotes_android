@@ -31,6 +31,7 @@ public class CoffeeBag implements Serializable, Freshness{
 
     public static class Photo implements Serializable{
         public String detailPhoto;
+        public String iconPhoto;
     }
 
     @Override
