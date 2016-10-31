@@ -29,6 +29,10 @@ public class BaseActivity extends AppCompatActivity {
         switch(item.getItemId()){
             case R.id.menu_logout:
                 ErrorHandler.bounceToLogin(this);
+                break;
+            case android.R.id.home:
+                finish();
+                break;
         }
         return super.onOptionsItemSelected(item);
     }

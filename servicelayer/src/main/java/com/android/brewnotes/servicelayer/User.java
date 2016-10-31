@@ -17,6 +17,11 @@ public class User {
     public List<Recommendation> recs;
 
 
+    public String getFullName(){
+        return firstName + " " + lastName;
+    }
+
+
 
     public static class Photo{
         public String profilePhoto;

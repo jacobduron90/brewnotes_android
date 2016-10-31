@@ -4,6 +4,9 @@ import android.app.Application;
 
 import com.android.brewnotes.Injector;
 import com.android.brewnotes.Modules;
+import com.android.brewnotes.service.UserManager;
+
+import javax.inject.Inject;
 
 
 /**

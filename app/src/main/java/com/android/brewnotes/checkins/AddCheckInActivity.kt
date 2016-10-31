@@ -4,6 +4,9 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.Toolbar
+import android.util.Log
+import android.widget.EditText
+import android.widget.TextView
 import butterknife.BindView
 import butterknife.ButterKnife
 import butterknife.OnClick
@@ -20,11 +23,13 @@ class AddCheckInActivity : BaseActivity(), AddCheckInPresenter.AddRecView {
 
     @Inject lateinit var presenter : AddCheckInPresenter
 
-    @BindView(R.id.aroma_card)  lateinit var aromaCard : MultiSelectionCard
-    @BindView(R.id.body_card)   lateinit var bodyCard : MultiSelectionCard
-    @BindView(R.id.flavor_card) lateinit var flavorCard : MultiSelectionCard
-    @BindView(R.id.finish_card) lateinit var finishCard : MultiSelectionCard
-    @BindView(R.id.toolbar)     lateinit var bar : Toolbar
+    @BindView(R.id.aroma_card)      lateinit var aromaCard : MultiSelectionCard
+    @BindView(R.id.body_card)       lateinit var bodyCard : MultiSelectionCard
+    @BindView(R.id.flavor_card)     lateinit var flavorCard : MultiSelectionCard
+    @BindView(R.id.finish_card)     lateinit var finishCard : MultiSelectionCard
+    @BindView(R.id.toolbar)         lateinit var bar : Toolbar
+    @BindView(R.id.checkin_rating)  lateinit var rating : EditText
+    @BindView(R.id.checkin_comment) lateinit var comment : TextView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,12 +53,17 @@ class AddCheckInActivity : BaseActivity(), AddCheckInPresenter.AddRecView {
         }
     }
 
-    override fun displayBag(bag: CoffeeBag) {
-        bar.setTitle(bag.name)
+    override fun displayBag(bag: CoffeeBag?) {
+        Log.d("TAG", "displayBag: " + bag?.name)
+        supportActionBar?.setTitle(bag?.name)
+    }
+
+    override fun getComment(): String {
+        return comment.text.toString()
     }
 
     override fun getScore(): Int {
-        return 0
+        return Integer.parseInt(rating?.text.toString())
     }
 
     override fun getAroma(): List<String> {

@@ -28,10 +28,7 @@ class DashboardPresenter @Inject constructor(val userManager:UserManager, val re
 
     fun loadData() {
         Log.d("hit", "hit succ");
-        userManager.user
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe { dashView?.displayUserInfo(it) }
+        dashView?.displayUserInfo(userManager.user)
 
         recManager.loadCheckIns("")
             .subscribeOn(Schedulers.io())

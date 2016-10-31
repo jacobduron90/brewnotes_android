@@ -7,6 +7,7 @@ import com.android.brewnotes.coffeebag.CompanyActivity;
 import com.android.brewnotes.dashboard.DashboardActivity;
 import com.android.brewnotes.checkins.AddCheckInActivity;
 import com.android.brewnotes.checkins.CheckInSummaryActivity;
+import com.android.brewnotes.service.CheckInManager;
 import com.android.brewnotes.service.CoffeeBagManager;
 import com.android.brewnotes.ErrorHandler;
 import com.android.brewnotes.login.MainActivity;
@@ -72,6 +73,10 @@ public class ApplicationModule {
 
     @Provides @Named("authToken") String providesAuthToken(UserManager um){
         return um.getAuthToken();
+    }
+
+    @Provides @Singleton CheckInManager providesCheckinManager(){
+        return new CheckInManager();
     }
 
     @Provides

@@ -46,6 +46,25 @@
         android:id="@+id/finish_card"
         />
 
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:hint="Comment"
+        android:id="@+id/checkin_comment"
+        />
+    <EditText
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:hint="rating"
+        android:layout_marginTop="16dp"
+        android:inputType="number"
+        android:id="@+id/checkin_rating"
+        />
+
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="46dp"
@@ -54,6 +73,7 @@
         android:layout_marginTop="8dp"
         android:id="@+id/add_checkin_button"
         />
+
 
 
 </LinearLayout>

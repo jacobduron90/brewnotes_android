@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -67,6 +68,7 @@ public class CoffeeBagDetailActivity extends BaseActivity implements CoffeeDetai
 
     @Override
     protected void onPostResume() {
+        Log.d("TAG", "onPostCalled");
         super.onPostResume();
         presenter.loadRecommendations();
     }
@@ -103,6 +105,7 @@ public class CoffeeBagDetailActivity extends BaseActivity implements CoffeeDetai
     public void setCheckIns(@org.jetbrains.annotations.Nullable List<CheckIn> recs) {
         if(recs != null){
             container.displayCheckIns(recs);
+            Toast.makeText(this,"recs size: " + recs.size(), Toast.LENGTH_SHORT).show();
             findViewById(R.id.recommendation_see_more).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

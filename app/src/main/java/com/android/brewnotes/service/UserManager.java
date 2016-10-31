@@ -71,27 +71,20 @@ public class UserManager{
         this.user = user;
     }
 
-    public Observable<User> getUser() {
-        return Observable.create(new Observable.OnSubscribe<User>() {
-            @Override
-            public void call(Subscriber<? super User> subscriber) {
-                if(user == null){
-                    subscriber.onNext(user);
-                }else{
-                    user = new User();
-                    user.photo = new User.Photo();
-                    user.photo.profilePhoto = "http://johnsonlaird.com/assets/images/1456/1456_profile1_sm.jpg";
-                    user.firstName = "John";
-                    user.lastName = "Jupiter";
-                    user.followingCount = 32;
-                    user.checkInCount = 10;
-                    subscriber.onNext(user);
-                }
+    public User getUser() {
+        if(user != null){
+            user = new User();
+            user.photo = new User.Photo();
+            user.photo.profilePhoto = "http://johnsonlaird.com/assets/images/1456/1456_profile1_sm.jpg";
+            user.firstName = "John";
+            user.lastName = "Jupiter";
+            user.followingCount = 32;
+            user.checkInCount = 10;
 
+        }
 
-                subscriber.onCompleted();
-            }
-        });
+        return user;
+
     }
 
     private void saveAuthToken(String token){
