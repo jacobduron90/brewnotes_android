@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     tools:context="com.android.brewnotes.coffeebag.CoffeeBagDetailActivity"
     android:fitsSystemWindows="true"
+    android:background="@color/gray_white"
     >
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"

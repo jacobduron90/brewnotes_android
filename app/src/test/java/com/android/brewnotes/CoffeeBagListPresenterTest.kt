@@ -1,7 +1,7 @@
 package com.android.brewnotes
 
 import com.android.brewnotes.coffeebag.CoffeeBagListPresenter
-import com.android.brewnotes.service.CoffeeBagManager
+import com.android.brewnotes.service.CoffeeManager
 import com.android.brewnotes.servicelayer.CoffeeBag
 import org.junit.After
 import org.junit.Before
@@ -17,14 +17,14 @@ import rx.Observable
 class CoffeeBagListPresenterTest {
 
 
-    var mockCoffeeManager : CoffeeBagManager? = null;
+    var mockCoffeeManager : CoffeeManager? = null;
     var presenter : CoffeeBagListPresenter? = null;
     var mockView : CoffeeBagListPresenter.CoffeeBagListView? = null;
 
     @Before fun setup(){
         RxSchedulerHelper.setup();
 
-        mockCoffeeManager = Mockito.mock(CoffeeBagManager::class.java)
+        mockCoffeeManager = Mockito.mock(CoffeeManager::class.java)
         mockView = Mockito.mock(CoffeeBagListPresenter.CoffeeBagListView::class.java)
 
         presenter = CoffeeBagListPresenter(mockCoffeeManager!!)
@@ -40,7 +40,7 @@ class CoffeeBagListPresenterTest {
         val bags : MutableList<CoffeeBag> = mutableListOf()
         var observable : Observable<MutableList<CoffeeBag>> = Observable.just(bags);
 
-        Mockito.`when`(mockCoffeeManager?.getCoffeeBagListNetwork(Mockito.anyString())).thenReturn(observable);
+        Mockito.`when`(mockCoffeeManager?.getCoffeeBagList(Mockito.anyString())).thenReturn(observable);
 
         presenter?.getCoffeeBags("1");
 
@@ -51,7 +51,7 @@ class CoffeeBagListPresenterTest {
         presenter?.attach(mockView!!)
         val missedException : Exception = Exception("messed up")
         var errorObservable : Observable<MutableList<CoffeeBag>> = Observable.error(missedException)
-        Mockito.`when`(mockCoffeeManager?.getCoffeeBagListNetwork(Mockito.anyString())).thenReturn(errorObservable)
+        Mockito.`when`(mockCoffeeManager?.getCoffeeBagList(Mockito.anyString())).thenReturn(errorObservable)
 
         presenter?.getCoffeeBags("1")
         Mockito.verify(mockView!!, Mockito.times(1)).displayErrorMessage(missedException)

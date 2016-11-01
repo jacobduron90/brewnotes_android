@@ -6,10 +6,9 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 
-import com.android.brewnotes.service.CoffeeBagManager;
+import com.android.brewnotes.service.CoffeeManager;
 import com.android.brewnotes.ErrorHandler;
 import com.android.brewnotes.R;
 import com.android.brewnotes.framework.BaseActivity;
@@ -38,7 +37,8 @@ public class CoffeeBagActivity extends BaseActivity implements CoffeeBagListPres
 
 
 
-    @Inject CoffeeBagManager coffeeBagManager;
+    @Inject
+    CoffeeManager coffeeBagManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

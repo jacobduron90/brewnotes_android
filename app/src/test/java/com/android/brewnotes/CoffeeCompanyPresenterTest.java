@@ -1,8 +1,7 @@
 package com.android.brewnotes;
 
-import com.android.brewnotes.coffeebag.CoffeeBagListPresenter;
 import com.android.brewnotes.coffeebag.CoffeeCompanyListPresenter;
-import com.android.brewnotes.service.CoffeeBagManager;
+import com.android.brewnotes.service.CoffeeManager;
 import com.android.brewnotes.servicelayer.CoffeeCompany;
 
 import org.junit.After;
@@ -13,10 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import rx.Observable;
-import rx.Scheduler;
-import rx.android.plugins.RxAndroidPlugins;
-import rx.android.plugins.RxAndroidSchedulersHook;
-import rx.schedulers.Schedulers;
 
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyList;
@@ -31,14 +26,14 @@ import static org.mockito.Mockito.when;
 public class CoffeeCompanyPresenterTest {
 
     CoffeeCompanyListPresenter.CoffeeCompanyListView mockCompanyView;
-    CoffeeBagManager mockBagManager;
+    CoffeeManager mockBagManager;
     CoffeeCompanyListPresenter presenter;
     Exception newException;
 
     @Before public void setup(){
         RxSchedulerHelper.setup();
         mockCompanyView = mock(CoffeeCompanyListPresenter.CoffeeCompanyListView.class);
-        mockBagManager = mock(CoffeeBagManager.class);
+        mockBagManager = mock(CoffeeManager.class);
         newException = new Exception("messed up");
 
 

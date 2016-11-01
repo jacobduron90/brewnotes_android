@@ -3,7 +3,6 @@ package com.android.brewnotes.widgets;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.support.v7.widget.CardView;
-import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.android.brewnotes.R;
+import com.android.brewnotes.servicelayer.CheckIn;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -99,7 +99,7 @@ public class MultiSelectionCard extends CardView {
         title.setText(TITLE[selectionType]);
 
         String[] selections = getSelections(selectionType);
-        loadSelections(selections);
+        loadSelections(selections, false);
 
 
     }
@@ -128,17 +128,50 @@ public class MultiSelectionCard extends CardView {
     private TextView[] views;
     private static final int LETTER_THRESHOLD = 30;
 
+    CheckIn checkIn;
 
-    private void loadSelections(String[] selections){
+
+    public void loadFromCheckIn(CheckIn checkIn){
+        this.checkIn = checkIn;
+        List<String> traits;
+        switch (selectionType){
+            case 0:
+                traits = checkIn.getRec().aromas;
+                break;
+            case 1:
+                traits = checkIn.getRec().body;
+                break;
+            case 2:
+                traits = checkIn.getRec().flavor;
+                break;
+            case 3:
+            default:
+                traits = checkIn.getRec().finish;
+                break;
+        }
+
+        if(traits.size() == 0){
+            this.setVisibility(View.GONE);
+        }else{
+            loadSelections(traits.toArray(new String[traits.size()]), true);
+        }
+
+
+    }
+
+
+    private void loadSelections(String[] selections, boolean setAllSelected){
         views = new TextView[selections.length];
 
         LinearLayout row = null;
         int letterCount = 0;
+
+        selectionContainer.removeAllViews();
+
         for(int i = 0; i < selections.length; i++){
             if(row == null){
                 row = getNewRow();
                 selectionContainer.addView(row);
-
             }
             String text = selections[i];
 
@@ -148,6 +181,10 @@ public class MultiSelectionCard extends CardView {
             selection.setText(text);
             views[i] = selection;
             selection.setOnClickListener(selectedListener);
+
+            if(setAllSelected){
+                selection.setSelected(true);
+            }
 
             letterCount += text.length();
             int tempLetCount = letterCount;

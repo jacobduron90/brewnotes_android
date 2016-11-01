@@ -13,12 +13,13 @@
         android:textSize="20sp"
         android:layout_marginBottom="8dp"
         android:id="@+id/selection_container_title"
+        android:textColor="@color/purplish_brown"
 
         />
     <View
         android:layout_width="match_parent"
         android:layout_height="3dp"
-        android:background="#000080"
+        android:background="@color/earth_green"
         android:layout_marginBottom="8dp"/>
     <LinearLayout
         android:layout_width="match_parent"

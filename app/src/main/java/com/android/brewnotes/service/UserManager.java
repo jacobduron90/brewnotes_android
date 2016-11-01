@@ -8,6 +8,7 @@ import com.android.brewnotes.servicelayer.AuthenticateRequest;
 
 import com.android.brewnotes.framework.BrewApplication;
 import com.android.brewnotes.servicelayer.User;
+import com.google.gson.Gson;
 
 import rx.Observable;
 import rx.Subscriber;
@@ -24,9 +25,12 @@ public class UserManager{
     private String authToken;
     private BrewNotesContract contract;
     private User user;
+    private Gson gson;
 
-    public UserManager(BrewNotesContract contract){
+
+    public UserManager(BrewNotesContract contract, Gson gson){
         this.contract = contract;
+        this.gson = gson;
     }
 
 
@@ -69,9 +73,16 @@ public class UserManager{
 
     private void saveUser(User user){
         this.user = user;
+
+        getUserSharedPrefs().edit().putString("user", gson.toJson(user)).apply();
     }
 
     public User getUser() {
+        if(user == null){
+            user = gson.fromJson(getPrefsString("user"), User.class);
+        }
+
+
         if(user != null){
             user = new User();
             user.photo = new User.Photo();
@@ -94,6 +105,9 @@ public class UserManager{
 
     public void logout(){
         getUserSharedPrefs().edit().remove(PREFS_AUTH_TOKEN_KEY).apply();
+        getUserSharedPrefs().edit().remove("user").apply();
         authToken = null;
     }
+
+
 }

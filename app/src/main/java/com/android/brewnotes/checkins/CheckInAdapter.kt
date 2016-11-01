@@ -27,6 +27,11 @@ import javax.inject.Inject
 class CheckInAdapter @Inject constructor() : RecyclerView.Adapter<CheckInAdapter.RecHolder>(){
 
 
+    interface CheckInClick{
+        fun checkInClicked(checkin : CheckIn?)
+    }
+
+    var checkInClickListener : CheckInClick? = null
 
     var recList : MutableList<CheckIn>? = mutableListOf()
 
@@ -80,6 +85,8 @@ class CheckInAdapter @Inject constructor() : RecyclerView.Adapter<CheckInAdapter
             holder?.uploadedPhoto?.visibility = View.GONE
         }
 
+        holder?.itemView?.setOnClickListener { checkInClickListener?.checkInClicked(checkIn) }
+
 
     }
 
@@ -103,6 +110,8 @@ class CheckInAdapter @Inject constructor() : RecyclerView.Adapter<CheckInAdapter
         fun init(){
             ButterKnife.bind(this, itemView)
         }
+
+
 
 
     }

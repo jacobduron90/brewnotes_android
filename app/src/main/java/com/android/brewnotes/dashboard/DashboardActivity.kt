@@ -1,13 +1,12 @@
 package com.android.brewnotes.dashboard
 
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.support.design.widget.FloatingActionButton
-import android.support.v7.widget.CardView
+
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.Toolbar
-import android.util.Log
+import android.view.Menu
 import android.widget.Toast
 import butterknife.BindView
 import butterknife.ButterKnife
@@ -18,8 +17,8 @@ import com.android.brewnotes.servicelayer.User
 import com.android.brewnotes.coffeebag.CompanyActivity
 import com.android.brewnotes.framework.BaseActivity
 import com.android.brewnotes.checkins.CheckInAdapter
+import com.android.brewnotes.checkins.CheckInDetailActivity
 import com.android.brewnotes.servicelayer.CheckIn
-import com.android.brewnotes.servicelayer.Recommendation
 import com.android.brewnotes.widgets.ProfileCard
 import javax.inject.Inject
 
@@ -31,6 +30,7 @@ class DashboardActivity : BaseActivity(), DashboardPresenter.DashboardView {
     lateinit var recList : RecyclerView
     lateinit var userCard : ProfileCard
     @BindView(R.id.fab) lateinit var fab : FloatingActionButton
+
 
 
 
@@ -48,6 +48,18 @@ class DashboardActivity : BaseActivity(), DashboardPresenter.DashboardView {
         recList?.adapter = recAdapter
         userCard = findViewById(R.id.user_card) as ProfileCard
         fab.setOnClickListener { goToCoffeeSearch() }
+        recAdapter.checkInClickListener = object : CheckInAdapter.CheckInClick{
+            override fun checkInClicked(checkin: CheckIn?) {
+                if(checkin != null)
+                    startActivity(CheckInDetailActivity.getEditCheckInIntent(checkin?.id, checkin?.bagId, this@DashboardActivity))
+            }
+        }
+
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.logout_menu, menu)
+        return super.onCreateOptionsMenu(menu)
     }
 
     override fun onResume() {

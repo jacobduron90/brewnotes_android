@@ -10,7 +10,135 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context="com.android.brewnotes.checkins.AddCheckInActivity">
+    tools:context="com.android.brewnotes.checkins.AddCheckInActivity"
+    tools:background="@color/gray_white"
+
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white_cream"
+        android:padding="8dp">
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/missing_photo_drawable"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginStart="12dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Coffee Bag"
+                android:layout_marginTop="8dp"
+                android:textSize="24sp"
+                android:id="@+id/coffee_bag_name"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="by Company name"
+                android:layout_marginTop="4dp"
+                android:textSize="18sp"
+                android:id="@+id/coffee_bag_company_name"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#e9e9a9">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="User #1"
+            android:textSize="18sp"
+            android:layout_marginEnd="8dp"
+            android:id="@+id/recommendation_user_name"
+            android:layout_gravity="end|center"/>
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="35dp"
+            tools:text="Osk Kosh"
+            android:lines="1"
+            android:ellipsize="end"
+            android:id="@+id/recommendation_user_photo"
+            tools:src="@drawable/missing_photo_drawable"
+            android:layout_gravity="end"/>
+
+
+    </FrameLayout>
+
+
+
+
+    <SeekBar
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:max="10"
+        android:id="@+id/checkin_rating"
+        android:thumbTint="@color/dark_brown"
+        android:thumbTintMode="src_over"
+        />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginBottom="24dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="9"
+            android:textColor="@color/dark_brown"
+            android:textSize="18sp"
+            android:id="@+id/checkin_score_label"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="/10"
+            android:textColor="@color/dark_brown"
+            android:textSize="18sp"
+            />
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/checkin_comment_written"
+        android:textSize="18sp"
+        tools:text="&quot;Bacon ipsum dolor amet burgdoggen turducken dolore shank, quis occaecat short loin consequat lorem pork in. Consectetur strip steak prosciutto, adipisicing jowl corned beef pork chop capicola aliquip proident dolore pariatur ut.&quot;"
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:textColor="@color/dark_brown"
+        android:textStyle="italic"
+        />
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="100dp"
+        android:textSize="18sp"
+        android:hint="Comment"
+        android:id="@+id/checkin_comment"
+        android:background="#fff"
+        android:gravity="top|start"
+        android:layout_marginBottom="8dp"
+        android:padding="8dp"
+        android:textColor="@color/dark_brown"
+        android:textColorHint="@color/dark_brown"
+        />
+
+
+
 
 
     <com.android.brewnotes.widgets.MultiSelectionCard
@@ -46,23 +174,11 @@
         android:id="@+id/finish_card"
         />
 
-
-    <EditText
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:hint="Comment"
-        android:id="@+id/checkin_comment"
-        />
-    <EditText
-        android:layout_width="60dp"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:hint="rating"
-        android:layout_marginTop="16dp"
-        android:inputType="number"
-        android:id="@+id/checkin_rating"
-        />
+        android:layout_height="200dp"
+        android:layout_margin="16dp"
+        android:id="@+id/user_uploaded_photo"/>
 
 
     <Button
@@ -72,7 +188,9 @@
         style="@style/AppTheme.ButtonPrimary"
         android:layout_marginTop="8dp"
         android:id="@+id/add_checkin_button"
+        android:elevation="4dp"
         />
+
 
 
 

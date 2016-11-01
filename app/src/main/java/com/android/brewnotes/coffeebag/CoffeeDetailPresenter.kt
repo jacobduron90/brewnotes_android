@@ -1,6 +1,6 @@
 package com.android.brewnotes.coffeebag
 
-import com.android.brewnotes.service.CoffeeBagManager
+import com.android.brewnotes.service.CoffeeManager
 import com.android.brewnotes.service.CheckInManager
 import com.android.brewnotes.servicelayer.CheckIn
 import com.android.brewnotes.servicelayer.CoffeeBag
@@ -10,7 +10,7 @@ import javax.inject.Inject
 /**
  * Created by jacobduron on 10/17/16.
  */
-class CoffeeDetailPresenter @Inject constructor(val cm : CoffeeBagManager, val rm : CheckInManager){
+class CoffeeDetailPresenter @Inject constructor(val cm : CoffeeManager, val rm : CheckInManager){
 
     var detailView : CoffeeDetailView? = null;
     var bag : CoffeeBag? = null;

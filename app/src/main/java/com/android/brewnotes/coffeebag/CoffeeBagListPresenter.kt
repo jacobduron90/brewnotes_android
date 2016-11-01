@@ -1,6 +1,6 @@
 package com.android.brewnotes.coffeebag
 
-import com.android.brewnotes.service.CoffeeBagManager
+import com.android.brewnotes.service.CoffeeManager
 import com.android.brewnotes.servicelayer.CoffeeBag
 import rx.Subscription
 import rx.android.schedulers.AndroidSchedulers
@@ -10,7 +10,7 @@ import javax.inject.Inject
 /**
  * Created by jacobduron on 10/16/16.
  */
-class CoffeeBagListPresenter @Inject constructor(val coffeeManager : CoffeeBagManager){
+class CoffeeBagListPresenter @Inject constructor(val coffeeManager : CoffeeManager){
 
     var bagView : CoffeeBagListView? = null;
     var subscription : Subscription? = null
@@ -27,7 +27,7 @@ class CoffeeBagListPresenter @Inject constructor(val coffeeManager : CoffeeBagMa
     }
 
     fun getCoffeeBags(id : String) {
-        subscription = coffeeManager.getCoffeeBagListNetwork(id)
+        subscription = coffeeManager.getCoffeeBagList(id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(

@@ -1,18 +1,20 @@
 package com.android.brewnotes.framework;
 
+import com.android.brewnotes.checkins.CheckInDetailActivity;
 import com.android.brewnotes.coffeebag.CoffeeBagActivity;
 import com.android.brewnotes.coffeebag.CoffeeBagDetailActivity;
 import com.android.brewnotes.coffeebag.CompanyAdapter;
 import com.android.brewnotes.coffeebag.CompanyActivity;
 import com.android.brewnotes.dashboard.DashboardActivity;
-import com.android.brewnotes.checkins.AddCheckInActivity;
 import com.android.brewnotes.checkins.CheckInSummaryActivity;
 import com.android.brewnotes.service.CheckInManager;
-import com.android.brewnotes.service.CoffeeBagManager;
+import com.android.brewnotes.service.CoffeeManager;
 import com.android.brewnotes.ErrorHandler;
 import com.android.brewnotes.login.MainActivity;
 import com.android.brewnotes.service.BrewNotesContract;
 import com.android.brewnotes.service.UserManager;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import javax.inject.Named;
 import javax.inject.Singleton;
@@ -39,7 +41,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
                 CompanyActivity.class,
                 CheckInSummaryActivity.class,
                 DashboardActivity.class,
-                AddCheckInActivity.class
+                CheckInDetailActivity.class
 
         },
         staticInjections = {
@@ -51,14 +53,14 @@ public class ApplicationModule {
 
     @Provides
     @Singleton
-    UserManager provideUserManager(BrewNotesContract contract){
-        return new UserManager(contract);
+    UserManager provideUserManager(BrewNotesContract contract, Gson gson){
+        return new UserManager(contract, gson);
     }
 
     @Provides
     @Singleton
-    CoffeeBagManager providesCoffeeBagManager(UserManager userManager, BrewNotesContract contract){
-        return new CoffeeBagManager(userManager, contract);
+    CoffeeManager providesCoffeeBagManager(UserManager userManager, BrewNotesContract contract){
+        return new CoffeeManager(userManager, contract);
     }
 
     @Provides
@@ -92,6 +94,12 @@ public class ApplicationModule {
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .client(client)
                 .build();
+    }
+
+    @Provides
+    Gson getGson(){
+       return new GsonBuilder()
+               .create();
     }
 
 }

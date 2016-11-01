@@ -12,12 +12,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.brewnotes.R;
+import com.android.brewnotes.checkins.CheckInDetailActivity;
 import com.android.brewnotes.framework.BaseActivity;
-import com.android.brewnotes.checkins.AddCheckInActivity;
 import com.android.brewnotes.checkins.CheckInSummaryActivity;
 import com.android.brewnotes.servicelayer.CheckIn;
 import com.android.brewnotes.servicelayer.CoffeeBag;
-import com.android.brewnotes.servicelayer.Recommendation;
 import com.android.brewnotes.widgets.CheckInContainer;
 import com.bumptech.glide.Glide;
 
@@ -117,7 +116,7 @@ public class CoffeeBagDetailActivity extends BaseActivity implements CoffeeDetai
 
     @OnClick(R.id.add_rec_button)
     public void goToAddRec(){
-        startActivity(AddCheckInActivity.Companion.getLaunchIntent(this, presenter.getBag()._id));
+        startActivity(CheckInDetailActivity.Companion.getAddCheckInIntent(this, presenter.getBag()._id));
     }
 
     @Override
